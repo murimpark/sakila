@@ -26,7 +26,7 @@ public class LoginFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("ë¡œê·¸ì¸í•„í„° ì‹¤í–‰ : session ê²€ì‚¬");
+		System.out.println("·Î±×ÀÎÇÊÅÍ ½ÇÇà : session°Ë»ç");
 		HttpSession session = ((HttpServletRequest)request).getSession();
 		if(session.getAttribute("loginStaff") == null) {
 			((HttpServletResponse)response).sendRedirect(request.getServletContext().getContextPath()+"/LoginServlet");
