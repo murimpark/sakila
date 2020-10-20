@@ -9,6 +9,9 @@
 </head>
 <body>
 	<h1>로그인</h1>
+	<div>
+		오늘 접속자 수 : ${stats.count} 총 접속자 수 : ${totalCount}
+	</div>
 	<form action="">
 	<div>
 		<input type="text" placeholder="ID">
