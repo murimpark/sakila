@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script>
+	$(document).ready(function(){
+		$("#login").click(function() {
+			$("form").submit();
+		});
+	});
+</script>
 </head>
 <body>
 <div class="container">
@@ -14,15 +21,15 @@
 	<div>
 		오늘 접속자 수 : ${stats.count} 총 접속자 수 : ${totalCount}
 	</div>
-	<form action="">
+	<form>
 	<div>
-		<input class="form-group" type="text" placeholder="ID">
+		<input class="form-group" type="text" placeholder="ID" id="id">
 	</div>
 	<div>
-		<input class="form-group" type="password" placeholder="PW">
+		<input class="form-group" type="password" placeholder="PW" id="pw">
 	</div>
 	<div>
-		<button class="form-group btn btn-primary" type="button">Log-in</button>
+		<button class="form-group btn btn-primary" type="button" id="login">Log-in</button>
 	</div>
 	</form>
 </div>

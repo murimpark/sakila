@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import sakila.dao.StatsDao;
+import sakila.util.DButil;
 import sakila.vo.Stats;
 
 
@@ -15,10 +16,6 @@ import sakila.vo.Stats;
  */
 public class StatsService {
 	public StatsDao statsDao;
-	
-	final String URL = "jdbc:mariadb://localhost:3306/sakila";
-	final String USER = "root";
-	final String PASSWORD = "java1004";
 	
 	private Stats getToday() { // 오늘 날짜 가져오기 메서드
 		Calendar today = Calendar.getInstance(); // 오늘 날짜 가져오기
@@ -30,12 +27,14 @@ public class StatsService {
 	}
 	public long getTotalCount() { // 모든 카운트 가져오기
 		statsDao = new StatsDao();
-		long totalCount = 0; 
 		Connection conn = null;
+		DButil dbUtil = null;
+		
+		long totalCount = 0; 
 		
 		try {
-			conn = DriverManager.getConnection(URL,USER,PASSWORD);
-			conn.setAutoCommit(false);
+			dbUtil = new DButil();
+			conn = dbUtil.getConnection();
 			
 			totalCount = statsDao.selectTotalCount(conn);
 			conn.commit();
@@ -60,21 +59,20 @@ public class StatsService {
 	
 	public Stats getStats() {
 		statsDao = new StatsDao();
-		Stats returnStats = null;
 		Connection conn = null;
+		DButil dbUtil = null;
+		
+		Stats returnStats = null;
 		
 		try {
-			conn = DriverManager.getConnection(URL,USER,PASSWORD);
-			conn.setAutoCommit(false);
+			dbUtil = new DButil();
+			conn = dbUtil.getConnection();
 			
 			Stats stats = new Stats();
 			stats.setDay(this.getToday().getDay()); // getToday. 메서드 가져오기
 
-			Stats todayStats = statsDao.selectDay(conn, stats); // 오늘 날짜의 인원 상태를 가져오기
-			
-			returnStats = statsDao.selectDay(conn, todayStats); // selectDay 데이터 가져오기
+			returnStats = statsDao.selectDay(conn, stats); // selectDay 데이터 가져오기
 			conn.commit();
-			
 		} catch(Exception e) { // 예외처리
 			try {
 				conn.rollback(); //
@@ -95,17 +93,17 @@ public class StatsService {
 	public void countStats() {
 		statsDao = new StatsDao();
 		Connection conn = null;
+		DButil dbUtil = null;
 		
 		try {
-			conn = DriverManager.getConnection(URL,USER,PASSWORD);
-			conn.setAutoCommit(false);
+			dbUtil = new DButil();
+			conn = dbUtil.getConnection();
 			
 			Stats stats = new Stats();
 			stats.setDay(this.getToday().getDay());
 			
 			Stats todayStats = statsDao.selectDay(conn, stats);
 			
-
 			if(statsDao.selectDay(conn, stats) == null) { // selectDay값이 없다면 true
 				statsDao.insertStats(conn, stats); // 첫 방문자면 오늘 날짜에 카운터 1 입력
 			} else {

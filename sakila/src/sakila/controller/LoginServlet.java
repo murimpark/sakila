@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sakila.service.StaffService;
 import sakila.service.StatsService;
+import sakila.vo.Staff;
 import sakila.vo.Stats;
 
 /**
@@ -18,6 +20,7 @@ import sakila.vo.Stats;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private StatsService statsService; // 방문자 카운트 서비스 
+	private StaffService staffService; // 관리자 로그인 서비스
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -34,8 +37,15 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		staffService = new StaffService();
+		Staff staff = new Staff();
+		Staff returnStaff = staffService.getStaffByKey(staff);
+		if(returnStaff != null) {
+			request.setAttribute("returnStaff", returnStaff); // 리턴스태프를 로그인 스태프란 이름으로 옮김
+			request.getRequestDispatcher("/IndexServlet").forward(request, response); // IndexServlet으로 포워딩
+			return;
+		}
+		response.sendRedirect(request.getContextPath()+"/LoginServlet");
 	}
 
 }
