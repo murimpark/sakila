@@ -23,10 +23,10 @@
 	</div>
 	<form>
 	<div>
-		<input class="form-group" type="text" placeholder="ID" id="id">
+		<input class="form-group" type="text" placeholder="ID" id="id" name="staffId">
 	</div>
 	<div>
-		<input class="form-group" type="password" placeholder="PW" id="pw">
+		<input class="form-group" type="password" placeholder="PW" id="pw" name="password">
 	</div>
 	<div>
 		<button class="form-group btn btn-primary" type="button" id="login">Log-in</button>

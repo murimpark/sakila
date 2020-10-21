@@ -19,7 +19,7 @@ public class StaffService {
 			dbUtil = new DButil();
 			conn= dbUtil.getConnection();
 			
-			returnStaff = staffDao.selectStaffByKey(conn, returnStaff);
+			returnStaff = staffDao.selectStaffByKey(conn, staff);
 			conn.commit();
 		} catch(Exception e) { // 예외처리
 			try {

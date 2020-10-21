@@ -39,13 +39,19 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		staffService = new StaffService();
 		Staff staff = new Staff();
+		staff.setStaffId(Integer.parseInt(request.getParameter("staffId")));
+		staff.setPassword(request.getParameter("password"));
+		
 		Staff returnStaff = staffService.getStaffByKey(staff);
 		if(returnStaff != null) {
-			request.setAttribute("returnStaff", returnStaff); // 리턴스태프를 로그인 스태프란 이름으로 옮김
+			HttpSession session = request.getSession();
+			session.setAttribute("loginStaff", returnStaff); // 리턴스태프를 로그인 스태프란 이름으로 옮김
 			request.getRequestDispatcher("/IndexServlet").forward(request, response); // IndexServlet으로 포워딩
+			response.sendRedirect(request.getContextPath()+"/auth/IndexServlet"); // IndexServlet으로 페이지 전환
 			return;
+		} else {
+			response.sendRedirect(request.getContextPath()+"/LoginServlet");	
 		}
-		response.sendRedirect(request.getContextPath()+"/LoginServlet");
 	}
 
 }
