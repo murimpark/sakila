@@ -10,7 +10,7 @@
 <script>
 	$(document).ready(function(){
 		$("#login").click(function() {
-			$("form").submit();
+			$("#loginForm").submit();
 		});
 	});
 </script>
@@ -21,12 +21,12 @@
 	<div>
 		오늘 접속자 수 : ${stats.count} 총 접속자 수 : ${totalCount}
 	</div>
-	<form>
+	<form id="loginForm" method="post" action="${pageContext.request.contextPath}/">
 	<div>
-		<input class="form-group" type="text" placeholder="ID" id="id" name="staffId">
+		<input class="form-group" type="text" placeholder="ID" id="email" name="email">
 	</div>
 	<div>
-		<input class="form-group" type="password" placeholder="PW" id="pw" name="password">
+		<input class="form-group" type="password" placeholder="PW" id="password" name="password">
 	</div>
 	<div>
 		<button class="form-group btn btn-primary" type="button" id="login">Log-in</button>

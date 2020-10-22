@@ -17,11 +17,12 @@ import sakila.vo.Stats;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet({"/","/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 	private StatsService statsService; // 방문자 카운트 서비스 
 	private StaffService staffService; // 관리자 로그인 서비스
 	
+	// 로그인 폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginStaff") != null) {
@@ -36,17 +37,18 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 
+	//  로그인 액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		staffService = new StaffService();
 		Staff staff = new Staff();
-		staff.setStaffId(Integer.parseInt(request.getParameter("staffId")));
+		staff.setEmail(request.getParameter("email"));
 		staff.setPassword(request.getParameter("password"));
 		
-		Staff returnStaff = staffService.getStaffByKey(staff);
+		Staff returnStaff = staffService.getStaffByKey(staff); //로그인 성공 staff 
+		
 		if(returnStaff != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginStaff", returnStaff); // 리턴스태프를 로그인 스태프란 이름으로 옮김
-			request.getRequestDispatcher("/IndexServlet").forward(request, response); // IndexServlet으로 포워딩
 			response.sendRedirect(request.getContextPath()+"/auth/IndexServlet"); // IndexServlet으로 페이지 전환
 			return;
 		} else {

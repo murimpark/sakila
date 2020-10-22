@@ -11,7 +11,7 @@ public class DButil {
 		final String PASSWORD = "java1004";
 		
 		Connection conn = DriverManager.getConnection(URL,USER,PASSWORD);
-		conn.setAutoCommit(false); // 트랜잭션이 처리 될 경우를 대비, 자동커밋 하지않음
+		conn.setAutoCommit(false); // 트랜잭션이 처리 될 경우를 대비, 자동커밋 하지않음(커밋을 해야하지만 쿼리가 실행됨)
 		
 		return conn;
 	}

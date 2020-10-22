@@ -19,7 +19,7 @@ public class StaffService {
 			dbUtil = new DButil();
 			conn= dbUtil.getConnection();
 			
-			returnStaff = staffDao.selectStaffByKey(conn, staff);
+			returnStaff = staffDao.selectStaffByKey(conn, staff); // 트랜젝션 실행
 			conn.commit();
 		} catch(Exception e) { // 예외처리
 			try {
