@@ -23,7 +23,7 @@
 	</div>
 	<form id="loginForm" method="post" action="${pageContext.request.contextPath}/">
 	<div>
-		<input class="form-group" type="text" placeholder="ID" id="email" name="email">
+		<input class="form-group" type="text" placeholder="E-mail" id="email" name="email">
 	</div>
 	<div>
 		<input class="form-group" type="password" placeholder="PW" id="password" name="password">
