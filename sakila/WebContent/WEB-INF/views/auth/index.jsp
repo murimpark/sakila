@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>index</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>±âº» È­¸é</h1>
+	<h1>ê¸°ë³¸ í™”ë©´</h1>
 	<div>
-		<span>${loginStaff.eamil}</span>°ü¸®ÀÚ´Ô
+		<span>${loginStaff.eamil}</span>ê´€ë¦¬ìë‹˜
 	</div>
 	<div>
 		<a href="${pageContext.request.contextPath}/auth/logoutServlet">logout</a>
