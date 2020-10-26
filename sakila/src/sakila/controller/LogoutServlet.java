@@ -14,10 +14,15 @@ import javax.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
 		response.sendRedirect(request.getContextPath()+"/LoginServlet");
+=======
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath()+"/");
+>>>>>>> refs/remotes/origin/master
 	}
 
 }
