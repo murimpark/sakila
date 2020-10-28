@@ -1,4 +1,4 @@
-package sakila.controller;
+package sakila.controller.auth;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("indexServlet 호출 성공");
+		System.out.println("indexServlet");
 		request.getRequestDispatcher("/WEB-INF/views/auth/index.jsp").forward(request, response);
 	}
 

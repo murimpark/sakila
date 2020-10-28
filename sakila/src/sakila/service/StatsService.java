@@ -12,20 +12,20 @@ import sakila.vo.Stats;
 
 
 /*
- * 방문자
+ * 占썸문占쏙옙
  */
 public class StatsService {
 	public StatsDao statsDao;
 	
-	private Stats getToday() { // 오늘 날짜 가져오기 메서드
-		Calendar today = Calendar.getInstance(); // 오늘 날짜 가져오기
-		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd"); // 데이터 포멧 변경
-		String day = dateformat.format(today.getTime()); // 오늘 날짜의 데이터 포멧을 바꿈
+	private Stats getToday() { 
+		Calendar today = Calendar.getInstance(); 
+		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd"); 
+		String day = dateformat.format(today.getTime()); 
 		Stats stats = new Stats();
-		stats.setDay(day); // State의 데이터에 오늘 날짜 입력 
+		stats.setDay(day); 
 		return stats;
 	}
-	public long getTotalCount() { // 모든 카운트 가져오기
+	public long getTotalCount() { 
 		statsDao = new StatsDao();
 		Connection conn = null;
 		DButil dbUtil = null;
@@ -39,9 +39,9 @@ public class StatsService {
 			totalCount = statsDao.selectTotalCount(conn);
 			conn.commit();
 			
-		} catch(Exception e) { // 예외처리
+		} catch(Exception e) { 
 			try {
-				conn.rollback(); //
+				conn.rollback(); 
 			} catch(SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -69,13 +69,13 @@ public class StatsService {
 			conn = dbUtil.getConnection();
 			
 			Stats stats = new Stats();
-			stats.setDay(this.getToday().getDay()); // getToday. 메서드 가져오기
+			stats.setDay(this.getToday().getDay()); // getToday.
 
-			returnStats = statsDao.selectDay(conn, stats); // selectDay 데이터 가져오기
+			returnStats = statsDao.selectDay(conn, stats); // selectDay
 			conn.commit();
-		} catch(Exception e) { // 예외처리
+		} catch(Exception e) {
 			try {
-				conn.rollback(); //
+				conn.rollback();
 			} catch(SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -104,15 +104,15 @@ public class StatsService {
 			
 			Stats todayStats = statsDao.selectDay(conn, stats);
 			
-			if(statsDao.selectDay(conn, stats) == null) { // selectDay값이 없다면 true
-				statsDao.insertStats(conn, stats); // 첫 방문자면 오늘 날짜에 카운터 1 입력
+			if(statsDao.selectDay(conn, stats) == null) { 
+				statsDao.insertStats(conn, stats); //
 			} else {
-				statsDao.updateStats(conn, todayStats); // 오늘 방문자가 이미 있다면 기존 방문자 수에 +1을 함
+				statsDao.updateStats(conn, todayStats); 
 			}
 			conn.commit();
-		} catch(Exception e) { // 예외처리
+		} catch(Exception e) { 
 			try {
-				conn.rollback(); // 롤백
+				conn.rollback(); 
 			} catch(SQLException e1) {
 				e1.printStackTrace();
 			}

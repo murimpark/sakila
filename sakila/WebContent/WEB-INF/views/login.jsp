@@ -22,12 +22,12 @@
 	<div>
 		오늘 접속자 수 : ${stats.count} 총 접속자 수 : ${totalCount}
 	</div>
-	<form id="loginForm" method="post" action="${pageContext.request.contextPath}/">
+	<form id="loginForm" method="post" action="${pageContext.request.contextPath}/LoginServlet">
 	<div>
-		<input class="form-group" type="text" placeholder="E-mail" id="email" name="email">
+		<input class="form-group" type="text" placeholder="E-mail" id="email" name="email" value="Mike.Hillyer@sakilastaff.com">
 	</div>
 	<div>
-		<input class="form-group" type="password" placeholder="PW" id="password" name="password">
+		<input class="form-group" type="password" placeholder="PW" id="password" name="password" value="1234">
 	</div>
 	<div>
 		<button class="form-group btn btn-primary" type="button" id="login">Log-in</button>

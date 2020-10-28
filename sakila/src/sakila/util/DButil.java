@@ -11,7 +11,7 @@ public class DButil {
 		final String PASSWORD = "java1004";
 		
 		Connection conn = DriverManager.getConnection(URL,USER,PASSWORD);
-		conn.setAutoCommit(false); // Æ®·£Àè¼ÇÀÌ Ã³¸® µÉ °æ¿ì¸¦ ´ëºñ, ÀÚµ¿Ä¿¹Ô ÇÏÁö¾ÊÀ½(Ä¿¹ÔÀ» ÇØ¾ßÇÏÁö¸¸ Äõ¸®°¡ ½ÇÇàµÊ)
+		conn.setAutoCommit(false); // ìë™ ì»¤ë°‹ì„ í•˜ì§€ì•Šê³  try ë¬¸ ëì— ìˆ˜ë™ìœ¼ë¡œ ì»¤ë°‹ì„ ë„£ìŒ.
 		
 		return conn;
 	}

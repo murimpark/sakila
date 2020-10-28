@@ -11,10 +11,10 @@
 <body>
 	<h1>기본 화면</h1>
 	<div>
-		<span>${loginStaff.eamil}</span>관리자님
+		<span>${loginStaff.username}</span>관리자님
 	</div>
 	<div>
-		<a href="${pageContext.request.contextPath}/auth/logoutServlet">logout</a>
+		<a href="${pageContext.request.contextPath}/logoutServlet">logout</a>
 	</div>
 </body>
 </html>

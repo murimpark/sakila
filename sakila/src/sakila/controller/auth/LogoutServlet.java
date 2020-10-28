@@ -1,4 +1,4 @@
-package sakila.controller;
+package sakila.controller.auth;
 
 import java.io.IOException;
 
@@ -19,10 +19,5 @@ public class LogoutServlet extends HttpServlet {
 		session.invalidate();
 		
 		response.sendRedirect(request.getContextPath()+"/LoginServlet");
-
-		request.getSession().invalidate();
-		response.sendRedirect(request.getContextPath()+"/");
-
 	}
-
 }

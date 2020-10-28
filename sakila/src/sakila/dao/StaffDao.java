@@ -8,12 +8,12 @@ import sakila.query.StaffQuery;
 import sakila.vo.Staff;
 
 public class StaffDao {
-	// email와 비밀번호를 확인해서 email와 username을 넘김
+	// email
 	public Staff selectStaffByKey(Connection conn, Staff staff) throws Exception {
 		Staff returnStaff = null;
 		PreparedStatement stmt = conn.prepareStatement(StaffQuery.SELECT_STAFF_BY_KEY);
 		stmt.setString(1, staff.getEmail());
-		stmt.setString(2, "PASSWORD("+staff.getPassword()+")"); // PASSWORD()형태로 들어가야함
+		stmt.setString(2, staff.getPassword()); 
 		ResultSet rs = stmt.executeQuery();
 		
 		if(rs.next()) {

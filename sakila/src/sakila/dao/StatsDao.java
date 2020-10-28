@@ -34,14 +34,12 @@ public class StatsDao {
 		return totalCount;
 	}
 		
-	// 첫 접속 인원 카운팅
 	public void insertStats(Connection conn, Stats stats) throws Exception {
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.INSERT_STATS);
 		stmt.setString(1, stats.getDay());
 		stmt.executeUpdate();
 	}
 	
-	// 인원 카운팅 증가
 	public void updateStats(Connection conn, Stats stats) throws Exception {
 		PreparedStatement stmt = conn.prepareStatement(StatsQuery.UPDATE_STATS);
 		stmt.setString(1, stats.getDay());

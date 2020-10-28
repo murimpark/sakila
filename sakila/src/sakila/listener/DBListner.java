@@ -25,13 +25,13 @@ public class DBListner implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent arg0)  { 
-    	 System.out.println("contextInitialized() 실행");
+    	 System.out.println("contextInitialized() ");
          try {
-			Class.forName("org.mariadb.jdbc.Driver"); // Class.forName 실행
-			System.out.println("mariadb 드라이브로딩 성공");
+			Class.forName("org.mariadb.jdbc.Driver"); 
+			
 		} catch (ClassNotFoundException e) {
-			System.out.println("Class.forName()실행 실패");
-			e.printStackTrace(); // 오류 출력
+			System.out.println("Class.forName()");
+			e.printStackTrace(); 
 		}    }
 	
 }
