@@ -21,6 +21,8 @@ public class StaffDao {
 			returnStaff.setEmail(rs.getString("email"));
 			returnStaff.setUsername(rs.getString("username"));
 		}
+		rs.close();
+		stmt.close();
 		return returnStaff;
 	}
 }

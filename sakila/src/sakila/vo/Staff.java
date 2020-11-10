@@ -1,7 +1,5 @@
 package sakila.vo;
 
-import java.sql.Blob;
-
 public class Staff {
 	private int staffId;
 	private String firstName;

@@ -10,10 +10,6 @@ import sakila.dao.StatsDao;
 import sakila.util.DButil;
 import sakila.vo.Stats;
 
-
-/*
- * �湮��
- */
 public class StatsService {
 	public StatsDao statsDao;
 	

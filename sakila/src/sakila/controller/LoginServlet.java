@@ -14,9 +14,6 @@ import sakila.service.StatsService;
 import sakila.vo.Staff;
 import sakila.vo.Stats;
 
-/**
- * Servlet implementation class LoginServlet
- */
 @WebServlet({"/","/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 	private StatsService statsService;  
